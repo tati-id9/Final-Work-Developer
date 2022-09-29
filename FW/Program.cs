@@ -1,12 +1,12 @@
 ﻿System.Console.WriteLine("Введите значения массива через Enter, чтобы закончить ввод введите слово stop: ");
-string strArr = String.Empty;
 
+string strArr = String.Empty;
 strArr += ArrayInput();
 int m = ElementCount(strArr);
 string[] array = FillArray(strArr, m);
-System.Console.WriteLine($"Введенный массив -> [{string.Join(", ", array)}]");
 
-System.Console.WriteLine($"Введенный массив -> [{string.Join(", ", SecondArrayWithElementsOfThreeChar(array))}]");
+System.Console.WriteLine($"Введенный массив -> [{string.Join(", ", array)}]");
+PrintArray (SecondArrayWithElementsOfThreeChar(array));
 
 string [] SecondArrayWithElementsOfThreeChar (string[] initialArr)
 {
@@ -69,4 +69,16 @@ string[] FillArray(string str, int count)
         array[i] = s;
     }
     return array;
+}
+
+void PrintArray(string[] array)
+{   Console.Write("Итоговый массив -> [");
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i]!= null)
+        {
+        Console.Write($"\"{array[i]}\" ");
+        }
+    }
+    Console.Write("]");
 }
