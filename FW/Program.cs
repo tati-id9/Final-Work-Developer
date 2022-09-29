@@ -2,31 +2,33 @@
 
 string strArr = String.Empty;
 strArr += ArrayInput();
-int m = ElementCount(strArr);
-string[] array = FillArray(strArr, m);
+string[] array = FillArray(strArr, ElementCount(strArr));
 
 System.Console.WriteLine($"Введенный массив -> [{string.Join(", ", array)}]");
-PrintArray (SecondArrayWithElementsOfThreeChar(array));
+System.Console.WriteLine($"Итоговый массивв -> [{string.Join(", ", SecondArrayWithElementsOfThreeChar(array))}]");
 
-string [] SecondArrayWithElementsOfThreeChar (string[] initialArr)
+Console.ReadKey();
+
+string[] SecondArrayWithElementsOfThreeChar(string[] initialArr)
 {
-    string[] resultArr = new string [initialArr.Length];
+    string[] resultArr = new string[initialArr.Length];
     int count = 0;
 
-    for (int i=0; i< initialArr.Length; i++)
+    for (int i = 0; i < initialArr.Length; i++)
     {
-        if(initialArr[i].Length <=3)
+        if (initialArr[i].Length <= 3)
         {
             resultArr[count] = initialArr[i];
             count++;
         }
     }
+    Array.Resize(ref resultArr, count);
     return resultArr;
 }
 
 string ArrayInput()
 {
-    string s = Console.ReadLine();
+    string s = System.Console.ReadLine();
     if (s.ToLower() == "stop")
     {
         return "";
@@ -69,16 +71,4 @@ string[] FillArray(string str, int count)
         array[i] = s;
     }
     return array;
-}
-
-void PrintArray(string[] array)
-{   Console.Write("Итоговый массив -> [");
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (array[i]!= null)
-        {
-        Console.Write($"\"{array[i]}\" ");
-        }
-    }
-    Console.Write("]");
 }
